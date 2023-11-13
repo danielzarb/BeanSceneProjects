@@ -1,0 +1,26 @@
+﻿-- Create the 'RetailWebAppDB' database
+CREATE DATABASE RetailWebAppDB;
+GO
+
+-- Switch to the 'RetailWebAppDB' database
+USE RetailWebAppDB;
+GO
+
+-- Create the 'Category' table
+CREATE TABLE Category
+(
+    CategoryID INT PRIMARY KEY IDENTITY(1,1), 
+    Description NVARCHAR(255) NOT NULL
+);
+GO
+
+-- Create the 'Product' table with 'CategoryID' as a foreign key
+CREATE TABLE Product
+(
+    ProductID INT PRIMARY KEY IDENTITY(1,1),
+    CategoryID INT NOT NULL,
+    Description NVARCHAR(255) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID)
+);
+GO
